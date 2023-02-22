@@ -1,0 +1,77 @@
+##deploy testnet install pkg
+npm i @truffle/hdwallet-provider@next
+@@#####################################################
+
+
+
+
+ struct Ticket {
+    uint id;
+    int val;
+  }
+
+  Ticket[] tickets;
+
+
+
+
+function findTickets(int val) public view returns(Ticket[] memory) {
+    uint256 resultCount;
+
+    for (uint i = 0; i < tickets.length; i++) {
+        if (tickets[i].val == val) {
+            resultCount++;  // step 1 - determine the result count
+        }
+    }
+
+    Ticket[] memory result = new Ticket[](resultCount);  // step 2 - create the fixed-length array
+    uint256 j;
+
+    for (uint i = 0; i < tickets.length; i++) {
+        if (tickets[i].val == val) {
+            result[j] = tickets[i];  // step 3 - fill the array
+            j++;
+        }
+    }
+
+    return result; // step 4 - return
+}
+
+
+
+
+
+
+
+
+
+
+
+function getBalance() public view returns(uint){
+return address(this).balance;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+module.exports = {
+  contracts_build_directory: "./dap/src/contracts",

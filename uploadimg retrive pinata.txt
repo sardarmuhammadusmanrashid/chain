@@ -1,0 +1,69 @@
+const GgetUser=async()=> {
+    try {
+      const { web3 } = state;
+      const { contract } = state;
+      
+        
+      const formData = new FormData();
+      formData.append("file", img);
+
+      const resFile = await axios({
+        method: "post",
+        url: "https://api.pinata.cloud/pinning/pinFileToIPFS",
+        data: formData,
+        headers: {
+          pinata_api_key: `bb0d9ff448cba1c05184`,
+          pinata_secret_api_key: `1e8f36ecaac3437054e33fcb8737be92f1e3f5757f0a0ad5b97aa7757bb5931c`,
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      const ImgHash = `ipfs://${resFile.data.IpfsHash}`;
+      const balance = await contract.methods.sadd("usman",ImgHash,20).send({from:account});
+    console.log(ImgHash);
+    alert("insert");
+    
+    } catch (error) {
+      alert("sorry");
+      console.log(error);
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+name11.map((items,i)=>{
+  
+  return(
+    <div className="col-3 p-3 m-3">
+    <div class="card" >
+  <img class="card-img-top" src={`https://gateway.pinata.cloud/ipfs/${items[2].substring(6)}`} alt="Card image cap"/>
+  <div class="card-body">
+    <h5 class="card-title">{items[0]}</h5>
+    <p class="card-text">{items[1]}</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+</div>
+  )
+  
+})
+
+}
